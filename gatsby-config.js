@@ -8,6 +8,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+
   siteMetadata: {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
@@ -17,13 +18,24 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-postcss`,
+   
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: "kdftp30zvdbo",
+        accessToken: "S0pMdE2f1Yz4AtmdCx9u8yIumedzrwgQ8QSgAaIEfMs",
+      },
+    },
+
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -33,12 +45,15 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`, 
       },
+
+      
     },
+    `gatsby-transformer-ffmpeg`,
   ],
+
+
+  
 }
